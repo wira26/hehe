@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .card-container {
+            perspective: 1000px;
+        }
+        .birthday-card {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            cursor: pointer;
+        }
+        .card-front, .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-front {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card-back {
+            background-color: #fff;
+            transform: rotateY(180deg);
+            text-align: center;
+            padding: 20px;
+        }
+        .birthday-message {
+            margin: 20px 0;
+        }
+        .birthday-image {
+            width: 100%;
+            height: auto;
+        }
+        .birthday-card.flipped {
+            transform: rotateY(180deg);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }  
+        button{
+                border: 2px;
+                border-radius: 5px;
+                background-color: #dc3545;
+                justify-content: center;
+                display: flex;
+                position: absolute top-50 start-50;
+                margin: 10px 10px;
+                font-size: 25px;
+                font-family: 'Courier New', Courier, monospace;
+                color: white;
+            }
+ 
+    </style>
+</head>
+<body>
+
+<div class="card-container">
+    <div class="birthday-card" id="birthdayCard">
+        <div class="card-front">
+            <h1>Happy Birthday, Nurr!</h1>
+            <img class="birthday-image" src="foto.jpg" alt="Birthday Image">
+        </div>
+        <div class="card-back">
+            <p class="birthday-message" id="birthdayMessage"></p>
+            <p id="additionalMessage"></p>
+        </div>
+    </div>
+</div>
+<div class='position-absolute bottom-50 start-50 translate-middle'>
+    <button id="mute">PLAY</button></div>
+
+<script>
+function happyBirthday(name) {
+    const message = `
+        widih ada yang ultah niii.<br>
+        semoga diumur yg bertambah ini bisa semakin happy yaa hehew, ya walaupun tambah tua pasti nambah
+        juga beban pikirannya, tapi harus tetep di happy in aja yaaaa><
+    `;
+    const additionalMessage = `
+        semoga apa yang direncanakan ditahun ini bisa tercapaii yaa.Aminnnn<br>
+        pokonya mahh doa terbaekkkk buat nurrrr.<br>
+        Happy Birthday, ${name}! semoga hari kamu menyenangkannn
+    `;
+    document.getElementById('birthdayMessage').innerHTML = message;
+    document.getElementById('additionalMessage').innerHTML = additionalMessage;
+}
+
+document.getElementById('birthdayCard').addEventListener('click', function() {
+    this.classList.toggle('flipped');
+});
+
+// Menggunakan fungsi
+happyBirthday("Nur");
+var musik=new Audio();
+    musik.src="Jamrud - Selamat Ulang Tahun (HQ Audio ) HBD Song Theme Milenial.mp3";
+    musik.loop=true;
+    musik.play();
+    function mulaiAudio(){
+        var play=document.getElementById("play");
+        var play=document.getElementById("mute");
+
+        play.addEventListener('click',fplay);
+        mute.addEventListener('click',fmute);
+
+        function fplay(){
+            if(musik.paused){
+                musik.play();
+            }else{
+                musik.pause();
+            }
+        }
+    }
+window.addEventListener('load',mulaiAudio);
+</script>
+
+</body>
+</html>
